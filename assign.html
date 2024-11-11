@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Crop Irrigation System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #eaf4eb; /* Soft green background for an agricultural feel */
+    }
+    .card {
+      height: 100%; /* Ensures all cards stretch to the same height */
+    }
+    .real-time-card {
+      height: 50%; /* Set height for real-time moisture card */
+    }
+    .btn-refresh {
+      margin-top: 10px; /* Adjust margin for better positioning */
+    }
+    .bg-info {
+      background-color: #4caf50; /* Leafy green for moisture card */
+    }
+    .bg-success {
+      background-color: #81c784; /* Light green for history card */
+    }
+    .bg-warning {
+      background-color: #fbc02d; /* Golden yellow for irrigation control */
+    }
+    .bg-danger {
+      background-color: #e57373; /* Soft red for alerts */
+    }
+    .text-white {
+      color: #ffffff; /* White text for contrast */
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3e4e34;">
+    <div class="container-fluid justify-content-center">
+      <a class="navbar-brand" href="#">Automated Crop Irrigation System</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <a href="home.html" class="btn btn-secondary mb-4">Back</a>
+    <div class="row">
+      <!-- Real-time Data Section -->
+      <div class="col-lg-4 mb-4">
+        <div class="card text-center real-time-card">
+          <div class="card-header bg-info text-white">Real-Time Soil Moisture</div>
+          <div class="card-body d-flex flex-column align-items-center justify-content-center">
+            <h5 class="card-title">Moisture Level: <span id="moisture-level">45%</span></h5>
+            <p class="card-text">Status: <span id="status">Normal</span></p>
+            <button class="btn btn-primary btn-refresh">Refresh Data</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Moisture History Section -->
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-header bg-success text-white">Moisture History</div>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Moisture Level</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="history-table">
+                <tr><td>2024-10-01</td><td>08:30 AM</td><td>55%</td><td>Normal</td></tr>
+                <tr><td>2024-10-01</td><td>12:45 PM</td><td>43%</td><td>Low</td></tr>
+                <tr><td>2024-10-01</td><td>03:15 PM</td><td>61%</td><td>Normal</td></tr>
+                <tr><td>2024-10-01</td><td>07:00 PM</td><td>48%</td><td>Low</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Irrigation Control Panel -->
+      <div class="col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-header bg-warning text-white">Irrigation Control</div>
+          <div class="card-body">
+            <h5 class="card-title">Set Moisture Thresholds</h5>
+            <form id="control-form">
+              <div class="mb-3">
+                <label for="min-threshold" class="form-label">Minimum Threshold (%)</label>
+                <input type="number" class="form-control" id="min-threshold" placeholder="Enter min threshold" value="40">
+              </div>
+              <div class="mb-3">
+                <label for="max-threshold" class="form-label">Maximum Threshold (%)</label>
+                <input type="number" class="form-control" id="max-threshold" placeholder="Enter max threshold" value="70">
+              </div>
+              <button type="submit" class="btn btn-warning">Update Settings</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Alerts and Reports -->
+      <div class="col-lg-12 mb-4">
+        <div class="card">
+          <div class="card-header bg-danger text-white">Alerts and Reports</div>
+          <div class="card-body">
+            <h5 class="card-title">Recent Alerts</h5>
+            <ul id="alerts-list" class="list-group mb-3">
+              <li class="list-group-item">2024-10-02 10:15 AM - Moisture below threshold (38%)</li>
+              <li class="list-group-item">2024-10-01 03:45 PM - Moisture above threshold (72%)</li>
+              <li class="list-group-item">2024-09-30 11:20 AM - Moisture below threshold (39%)</li>
+              <li class="list-group-item">2024-09-29 02:30 PM - Moisture above threshold (75%)</li>
+            </ul>
+            <button class="btn btn-danger">Download Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
